@@ -84,10 +84,10 @@ document.querySelector(".btn-roll").addEventListener("click" , function() {
 var input = document.querySelector(".counter").value;
 var winningScore;
 
-if (input=true) {
+if (input) {
     winningScore=input;
 } else {
-    winningScore=100;
+    winningScore= 100 ;
 }
 
 document.querySelector(".btn-hold").addEventListener("click",function() {
