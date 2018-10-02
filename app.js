@@ -10,6 +10,9 @@ GAME RULES:
 */
 var scores, roundScore, activeplayer, gamePlaying;
 
+
+
+
 document.querySelector(".dice").style.display = "none";
 document.querySelector(".message").style.display = "none";
 document.querySelector(".message1").style.display = "none";
@@ -81,19 +84,20 @@ document.querySelector(".btn-roll").addEventListener("click" , function() {
 });
 
 
-var input = document.querySelector(".counter").value;
-var winningScore;
-
-if (input) {
-    winningScore=input;
-} else {
-    winningScore= 100 ;
-}
 
 document.querySelector(".btn-hold").addEventListener("click",function() {
     if (gamePlaying) {
     scores[activeplayer] += roundScore;
     document.querySelector("#score-" + activeplayer).textContent=scores[activeplayer];
+
+var input = document.querySelector(".counter").value;
+var winningScore;
+
+if (input) {
+    winningScore = input;
+} else {
+    winningScore = 100;
+};
 
     if (scores[activeplayer] >= winningScore) {
         document.querySelector("#name-"+[activeplayer]).textContent="Winner!";
