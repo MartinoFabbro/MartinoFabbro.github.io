@@ -64,7 +64,7 @@ document.querySelector(".btn-roll").addEventListener("click" , function() {
     document.getElementById("dice1").src = "dice-" + dice1 + ".png";
 
 
-    if (((dice == 6 && dice1 == 6)) || ((dice === 6 || dice1 === 6) && (lastDice === 6 || lastDice1 === 6))) {
+    if ((dice == 6 && dice1 == 6)) {
         
         document.querySelector(".message1").style.display = "block";
         scores[activeplayer] = 0;
