@@ -10,10 +10,9 @@ GAME RULES:
 */
 var scores, roundScore, activeplayer, gamePlaying;
 
-
-
-
 document.querySelector(".dice").style.display = "none";
+document.querySelector(".dice1").style.display = "none";
+
 document.querySelector(".message").style.display = "none";
 document.querySelector(".message1").style.display = "none";
 
@@ -24,6 +23,8 @@ activeplayer = 0;
 gamePlaying = true;
 
 document.querySelector(".dice").style.display = "none";
+document.querySelector(".dice1").style.display = "none";
+
 document.getElementById("score-0").textContent="0";
 document.getElementById("score-1").textContent="0";
 
@@ -39,34 +40,41 @@ document.querySelector(".player-0-panel").classList.remove("active");
 document.querySelector(".player-0-panel").classList.add("active");
 document.querySelector(".player-1-panel").classList.remove("active");
 
+document.querySelector(".message").style.display = "none";
+document.querySelector(".message1").style.display = "none";
+
+
 
 };
 
 init();
 
 var lastDice;
+var lastDice1;
 
 document.querySelector(".btn-roll").addEventListener("click" , function() {
+   
     if (gamePlaying) {
     var dice = Math.floor(Math.random()*6) +1;
-    var diceDom = document.querySelector(".dice");
-    diceDom.style.display="block";
-    diceDom.src ="dice-"+ dice + ".png";
+    var dice1 = Math.floor(Math.random()*6) +1;
 
-    if (dice === 6 && lastDice === 6) {
+    document.getElementById("dice").style.display="block";
+    document.getElementById("dice1").style.display="block";
+    document.getElementById("dice").src = "dice-" + dice + ".png";
+    document.getElementById("dice1").src = "dice-" + dice1 + ".png";
+
+
+    if (((dice == 6 && dice1 == 6)) || ((dice === 6 || dice1 === 6) && (lastDice === 6 || lastDice1 === 6))) {
         
         document.querySelector(".message1").style.display = "block";
         scores[activeplayer] = 0;
         document.querySelector("#score-" + activeplayer).textContent=0;
+        setTimeout(function(){$("#message1").fadeOut("slow")},500);
         nextPlayer();
-
-
-
-
-    } else if (dice !== 1) {
+    } else if (dice !== 1 && dice1 !==1) {
         document.querySelector(".message").style.display = "none";
         document.querySelector(".message1").style.display = "none";
-        roundScore += dice;
+        roundScore += dice + dice1;
         document.querySelector("#current-" + activeplayer).textContent = roundScore;   
     } else {
         // next player
@@ -80,6 +88,7 @@ document.querySelector(".btn-roll").addEventListener("click" , function() {
         
     }
     lastDice=dice;
+    lastDice1=dice1;
 }
 });
 
@@ -117,9 +126,13 @@ if (input) {
 function nextPlayer() {
     
     activeplayer === 0 ? activeplayer = 1 : activeplayer = 0;
-    lastDice === 0;
+    lastDice = 0;
+    lastDice1 = 0 ;
     roundScore = 0;
-    
+
+    // document.querySelector(".message").style.display = "none";
+    // document.querySelector(".message1").style.display = "none";
+
     document.getElementById("current-0").textContent = "0";
     document.getElementById("current-1").textContent = "0";
 
@@ -127,6 +140,8 @@ function nextPlayer() {
     document.querySelector(".player-1-panel").classList.toggle("active");
 
     document.querySelector(".dice").style.display="none";
+    document.querySelector(".dice1").style.display="none";
+
     
 
 };
