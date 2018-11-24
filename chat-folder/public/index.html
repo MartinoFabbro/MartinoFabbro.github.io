@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta chatset="utf-8">
+  <title>ChartChat</title>
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js></script>
+  <link href="/chat.css" rel="stylesheet" />
+</head>
+<body>
+  
+  <button onclick="chatWindow()">New ChartChat</button>
+<script>
+function chatWindow() {
+    window.open("http://localhost:8080");
+}
+</script>
+  
+  <div id="chart-chat">
+    <div id="chat-window">
+      <div id="feedback"></div>
+      <div id="output"></div>
+    </div>
+    <input id="username" type="text" placeholder="Username" />
+    <input id="message" type="text" placeholder="Message" />
+    <button id="send">Send</button>
+  </div>
+  <script src="/chat.js"></script>
+</body>
+</html>
